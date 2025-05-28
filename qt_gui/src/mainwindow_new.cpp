@@ -730,7 +730,7 @@ void MainWindow::updateHelpTabInfo() {
                 
                 helpTab->updateTestTaskInfo(
                     params.n_internal, params.m_internal,
-                    "Метод сопряженных градиентов (CG)",
+                    "Метод простой итерации (МПИ)",
                     build_method_parameters_string(params, solverTypeStr),
                     params.eps_precision, params.max_iterations,
                     results_square.iterations, results_square.precision,
@@ -775,7 +775,7 @@ void MainWindow::updateHelpTabInfo() {
                 
                 helpTab->updateMainTaskInfo(
                     params.n_internal, params.m_internal,
-                    "Метод сопряженных градиентов (CG)",
+                    "Метод простой итерации (МПИ)",
                     build_method_parameters_string(params, solverTypeStr),
                     params.eps_precision, params.max_iterations,
                     results_square.iterations, results_square.precision,
@@ -784,7 +784,7 @@ void MainWindow::updateHelpTabInfo() {
                     results_square.initial_residual_norm,
                     
                     // Refined grid parameters
-                    hasRefinedResults ? "Метод сопряженных градиентов (CG) на подробной сетке" : "N/A",
+                    hasRefinedResults ? "Метод простой итерации (МПИ) на подробной сетке" : "N/A",
                     hasRefinedResults ? "Подробная сетка" : "N/A",
                     params.eps_precision, params.max_iterations * 2, // Doubled for refined grid
                     results_square.refined_grid_iterations, 

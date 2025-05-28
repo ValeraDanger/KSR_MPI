@@ -67,7 +67,7 @@ private:
                                    StopCriterion& reason);
 
 public:
-    MSGSolver(const KokkosCrsMatrix& A, const KokkosVector& B, double initial_eps = 1e-6, int initial_max_iter = 10000, double relaxation_parameter = 0.0001) // Добавлен параметр tau
+    MSGSolver(const KokkosCrsMatrix& A, const KokkosVector& B, double initial_eps = 1e-6, int initial_max_iter = 10000, double relaxation_parameter = 6.7e-5) // Добавлен параметр tau
         : Solver(A, B, initial_eps, initial_max_iter, "Метод Простых Итераций (МПИ)"), // Исправлен вызов конструктора Solver
           eps_precision(initial_eps), eps_residual(initial_eps), eps_exact_error(initial_eps),
           use_precision(true), use_residual(true), use_exact_error(false),

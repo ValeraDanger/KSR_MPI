@@ -167,7 +167,7 @@ KokkosVector MSGSolver::solve() {
         cb_error_max_norm = error_max_norm;
     }
     
-    if (iteration_callback) {
+    if (iteration_callback && (iterationsDone % 100 == 0 || iterationsDone == 1)) {
         iteration_callback(0, cb_precision_max_norm, cb_r_max_norm, cb_error_max_norm);
     }
     
@@ -226,7 +226,7 @@ KokkosVector MSGSolver::solve() {
             }
             
             // Вывод информации в консоль и вызов колбэка
-            if (iteration_callback || (iterationsDone % 100 == 0 || iterationsDone == 1)) {
+            if (iteration_callback && (iterationsDone % 100 == 0 || iterationsDone == 1)) {
                  if (iterationsDone % 100 == 0 || iterationsDone == 1) { // Console output condition
                     std::cout << "Итерация: " << iterationsDone << "\n";
                     if (need_precision_norm_check && !std::isnan(precision_max_norm)) {
