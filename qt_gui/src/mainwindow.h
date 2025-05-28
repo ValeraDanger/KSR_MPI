@@ -192,6 +192,7 @@ private:
         bool use_max_iterations;
         bool use_refined_grid; // Флаг для сравнения с решением на более мелкой сетке
         QString solver_type;
+        double relaxation_parameter = 1.0; // Параметр релаксации
     } params;
     
     // Метод для очистки потока после завершения

@@ -189,8 +189,10 @@ SquareSolverResults DirichletSolverSquare::solve() {
     
     // и use_... флаги в true. Это будет полностью переопределено ниже.
     solver = std::make_unique<MSGSolver>(grid->get_matrix(), grid->get_rhs(), 
-    eps_precision, // Можно передать любой из eps, т.к. будет переопределено
-    max_iterations); // Передаем актуальное значение max_iterations
+        eps_precision, max_iterations);
+    
+    // Set the relaxation parameter
+    solver->setRelaxationParameter(relaxation_parameter);
 
     // Очищаем все критерии останова в MSGSolver, чтобы начать с чистого состояния.
     solver->clearStoppingCriteria();

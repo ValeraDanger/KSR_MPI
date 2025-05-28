@@ -61,6 +61,7 @@ public:
         bool use_refined_grid;
         QString solver_type;
         QString solver_name;
+        double relaxation_parameter = 1.0;
     };
 
     MainWindow(QWidget *parent = nullptr);

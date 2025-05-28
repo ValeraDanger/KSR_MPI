@@ -137,6 +137,20 @@ void SolverTabWidget::setupUI()
     useRefinedGridCheckBox->setChecked(false);
     additionalOptionsLayout->addWidget(useRefinedGridCheckBox);
     
+    QHBoxLayout *relaxationLayout = new QHBoxLayout();
+    relaxationParamLabel = new QLabel("Параметр релаксации (tau):");
+    relaxationParamSpinBox = new QDoubleSpinBox();
+    relaxationParamSpinBox->setRange(0, 2.0);  // Typical range for relaxation parameter
+    relaxationParamSpinBox->setValue(0.00027);       // Default value
+    relaxationParamSpinBox->setSingleStep(0.0001);
+    relaxationParamSpinBox->setDecimals(10);
+    relaxationParamSpinBox->setToolTip("Параметр релаксации влияет на скорость сходимости метода");
+    
+    relaxationLayout->addWidget(relaxationParamLabel);
+    relaxationLayout->addWidget(relaxationParamSpinBox);
+    
+    additionalOptionsLayout->addLayout(relaxationLayout);
+    
     // Информация о матрице
     matrixInfoLabel = new QLabel("Информация о матрице:");
     matrixInfoLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -302,4 +316,9 @@ void SolverTabWidget::setStopButtonEnabled(bool enabled)
 void SolverTabWidget::updateMatrixInfo(const QString& info)
 {
     matrixInfoLabel->setText(info);
+}
+
+double SolverTabWidget::getRelaxationParameter() const
+{
+    return relaxationParamSpinBox->value();
 }

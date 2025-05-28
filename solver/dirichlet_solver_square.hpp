@@ -139,6 +139,16 @@ public:
     void setUseRefinedGridComparison(bool value) { use_refined_grid_comparison = value; }
     bool getUseRefinedGridComparison() const { return use_refined_grid_comparison; }
 
+    // Установка параметров релаксации
+    void setRelaxationParameter(double tau) {
+        relaxation_parameter = tau;
+    }
+    
+    // Получение текущего параметра релаксации
+    double getRelaxationParameter() const {
+        return relaxation_parameter;
+    }
+
 private:
     // Параметры сетки
     int n_internal, m_internal;
@@ -182,6 +192,9 @@ private:
     IterationCallbackType iteration_callback;
     CompletionCallbackType completion_callback;
     ProgressCallbackType progress_callback; // Added
+
+    // Параметр релаксации
+    double relaxation_parameter = 1.0; // Default relaxation parameter
     
     // Вспомогательные методы
     std::vector<double> kokkosToStdVector(const KokkosVector& kv) const;

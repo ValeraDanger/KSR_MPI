@@ -35,8 +35,8 @@ if(NOT Kokkos_FOUND)
     GIT_TAG 4.6.00  # Используем стабильную версию
   )
   
-  # Настраиваем опции сборки Kokkos, включая подмодуль KokkosSparse
-  set(Kokkos_ENABLE_SERIAL ON CACHE BOOL "Enable Serial backend")
+  # Настраиваем опции сборки Kokkos, включая подмодуль KokkosSparseSSS
+  set(Kokkos_ENABLE_SERIAL OFF CACHE BOOL "Enable Serial backend")
   set(Kokkos_ENABLE_OPENMP ON CACHE BOOL "Enable OpenMP backend")
   set(Kokkos_ENABLE_CUDA OFF CACHE BOOL "Disable CUDA backend")
   set(Kokkos_ENABLE_SPARSE ON CACHE BOOL "Enable KokkosSparse module")
@@ -130,4 +130,13 @@ if(DIRICHLET_SOLVER_MAIN_PROJECT)
   # Добавляем исполняемый файл консольной версии
   add_executable(solver main.cpp)
   target_link_libraries(solver PRIVATE dirichlet_solver)
+endif()
+
+# Опции компиляции CUDA для повышения производительности
+if(CMAKE_CUDA_COMPILER)
+  target_compile_options(dirichlet_solver PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:
+    -use_fast_math
+    -Xptxas -O3
+    --expt-relaxed-constexpr
+  >)
 endif()

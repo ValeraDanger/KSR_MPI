@@ -415,6 +415,7 @@ void MainWindow::onSolveButtonClicked()
     params.use_max_iterations = solverTab->getUseMaxIterations();
     params.use_refined_grid = solverTab->getUseRefinedGrid();
     params.solver_type = solverTab->getSolverType();
+    params.relaxation_parameter = solverTab->getRelaxationParameter();
     
     // Очищаем данные предыдущего решения
     results = SolverResults{};
@@ -570,6 +571,7 @@ void MainWindow::setupSolver()
         solver_square->setUseResidualStopping(params.use_residual);
         solver_square->setUseErrorStopping(params.use_exact_error);
         solver_square->setUseMaxIterationsStopping(params.use_max_iterations);
+        solver_square->setRelaxationParameter(solverTab->getRelaxationParameter());
         
         // Установка флага для использования уточненной сетки
         solver_square->setUseRefinedGridComparison(params.use_refined_grid);

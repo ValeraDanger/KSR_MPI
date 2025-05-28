@@ -37,6 +37,7 @@ public:
     bool getUseMaxIterations() const;
     bool getUseRefinedGrid() const;
     QString getSolverType() const;
+    double getRelaxationParameter() const;
 
     // Управление кнопками
     void setSolveButtonEnabled(bool enabled);
@@ -83,4 +84,6 @@ private:
     
     // Информационные метки
     QLabel *matrixInfoLabel;
+    QLabel *relaxationParamLabel;
+    QDoubleSpinBox *relaxationParamSpinBox;
 };
