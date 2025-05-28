@@ -751,6 +751,8 @@ double DirichletSolverSquare::computeRefinedGridError() {
     refined_solver->setUseResidualStopping(current_use_r);
     refined_solver->setUseErrorStopping(current_use_e && refined_solver->hasTrueSolution());
     refined_solver->setUseMaxIterationsStopping(current_use_max_i);
+    refined_solver->setRelaxationParameter(this->relaxation_parameter); // Pass the current instance's relaxation parameter
+
     refined_solver->setUseRefinedGridComparison(false); // Отключаем рекурсивное сравнение
 
     // Вычисляем начальную норму невязки для уточненной сетки

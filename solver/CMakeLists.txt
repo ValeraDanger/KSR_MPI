@@ -37,8 +37,8 @@ if(NOT Kokkos_FOUND)
   
   # Настраиваем опции сборки Kokkos, включая подмодуль KokkosSparseSSS
   set(Kokkos_ENABLE_SERIAL OFF CACHE BOOL "Enable Serial backend")
-  set(Kokkos_ENABLE_OPENMP ON CACHE BOOL "Enable OpenMP backend")
-  set(Kokkos_ENABLE_CUDA OFF CACHE BOOL "Disable CUDA backend")
+  set(Kokkos_ENABLE_OPENMP OFF CACHE BOOL "Enable OpenMP backend")
+  set(Kokkos_ENABLE_CUDA ON CACHE BOOL "Disable CUDA backend")
   set(Kokkos_ENABLE_SPARSE ON CACHE BOOL "Enable KokkosSparse module")
   set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build static libraries")
   

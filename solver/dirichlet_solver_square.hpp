@@ -194,7 +194,7 @@ private:
     ProgressCallbackType progress_callback; // Added
 
     // Параметр релаксации
-    double relaxation_parameter = 1.0; // Default relaxation parameter
+    double relaxation_parameter = 6.7e-5; // Default relaxation parameter
     
     // Вспомогательные методы
     std::vector<double> kokkosToStdVector(const KokkosVector& kv) const;
